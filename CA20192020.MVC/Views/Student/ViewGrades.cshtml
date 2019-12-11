@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CA20192020.DataModel.Classes.StudentGrade>
+
+<h3>Here are your grades</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ModuleAssessment.Module.ModuleCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModuleAssessment.Module.ModuleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModuleAssessment.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModuleAssessment.Module.ModuleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModuleAssessment.Module.ModuleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModuleAssessment.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grade)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CA20192020.DataModel.Classes.ModuleAttendance>
+
+<h3>Here are is the attendance for the modules you teach</h3>
+<p>@ViewBag.ErrorMessage</p>
+<p>
+    @Html.ActionLink("Create New", "CreateAttendanceSheet", "Lecturer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Module.ModuleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.StudentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinishDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Module.ModuleName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student.StudentID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartDateTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FinishDateTime)
+    </td>
+</tr>
+}
+
+</table>

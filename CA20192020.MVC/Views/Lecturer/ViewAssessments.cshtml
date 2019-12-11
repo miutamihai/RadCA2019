@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CA20192020.DataModel.Classes.ModuleAssessment>
+<h3>Here are your current assessments</h3>
+<h5>@ViewBag.ErrorMessage</h5>
+
+<p>
+    @Html.ActionLink("Create New", "CreateAssessment", "Lecturer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Module.ModuleCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModuleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PercentageAllocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Module.ModuleCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModuleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PercentageAllocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+    </tr>
+}
+
+</table>

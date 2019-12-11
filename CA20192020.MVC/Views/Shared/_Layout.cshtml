@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mihai's New Moodle</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Mihai's New Moodle", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    <li>
+                        @if (User.IsInRole("Lecturer"))
+                        {
+                            @Html.ActionLink("Attendance Sheets", "AttendanceSheets", "Lecturer")
+                        }
+                        else if (User.IsInRole("Student"))
+                        {
+                            @Html.ActionLink("View Attendance", "ViewAttendance", "Student")
+                        }
+                    </li>
+                    <li>
+                            @if (User.IsInRole("Lecturer"))
+                            {
+                                @Html.ActionLink("Modules", "ModulesTeached", "Lecturer")
+                            }
+                            else if(User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Create Module", "CreateModule", "Student")
+                            }
+                            else if (User.IsInRole("Student"))
+                            {
+                                @Html.ActionLink("View Grades", "ViewGrades", "Student")
+                            }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Student"))
+                        {
+                            @Html.ActionLink("Enroll in Module", "ModuleEnrollment", "Student")
+                        }
+                        else if (User.IsInRole("Lecturer"))
+                        {
+                            @Html.ActionLink("Assessments", "ViewAssessments", "Lecturer")
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("List of Lecturers", "LecturerList", "Admin")
+                        }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Lecturer"))
+                        {
+                            @Html.ActionLink("Assessment Grades", "AssessmentGrades", "Lecturer")
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("List of Students", "StudentList", "Admin")
+                        }
+                    </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mihai's New Moodle</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

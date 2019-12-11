@@ -1,0 +1,32 @@
+﻿@model CA20192020.MVC.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>
+       You are logged in as 
+        @Html.Label(User.IsInRole("Admin") ? " an " : " a ")
+        @Html.Label(User.IsInRole("Lecturer") ? "Lecturer" : User.IsInRole("Student") ? "Student" : "Administrator")
+        
+    </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
+</div>

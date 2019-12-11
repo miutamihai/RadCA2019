@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CA20192020.DataModel.Classes.Lecturer>
+
+<h3>Here are the current lecturers</h3>
+<p>
+    @Html.ActionLink("Add new lecturer", "AddLecturer", "Admin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditLecturer", new { lecturerID=item.ID }, null)
+            @Html.ActionLink("Delete", "DeleteLecturer", new { lecturerID = item.ID }, null)
+        </td>
+    </tr>
+}
+
+</table>
